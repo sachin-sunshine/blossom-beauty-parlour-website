@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blossom Beauty Parlour – Look & Feel Your Best</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; color: #4a2c40; }
+
+    nav {
+      background: #fff;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 60px;
+      box-shadow: 0 2px 12px rgba(180,100,130,.12);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-size: 1.5rem; font-weight: 800; color: #c2185b; }
+    .logo span { color: #f48fb1; }
+    nav ul { list-style: none; display: flex; gap: 30px; }
+    nav ul a { text-decoration: none; color: #4a2c40; font-weight: 500; transition: color .2s; }
+    nav ul a:hover { color: #c2185b; }
+    .btn-nav { background: linear-gradient(135deg, #c2185b, #e91e63); color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 700; }
+    .btn-nav:hover { opacity: .88; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #fce4ec 100%);
+      padding: 90px 60px;
+      display: flex; align-items: center; justify-content: space-between; gap: 40px;
+    }
+    .hero-text h1 { font-size: 3rem; line-height: 1.2; color: #880e4f; }
+    .hero-text h1 span { color: #c2185b; background: linear-gradient(135deg, #c2185b, #e91e63); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-text p { color: #6d4c61; line-height: 1.8; max-width: 480px; margin: 20px 0 30px; font-size: 1.05rem; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn { display: inline-block; background: linear-gradient(135deg, #c2185b, #e91e63); color: #fff; padding: 14px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; transition: opacity .2s; }
+    .btn:hover { opacity: .88; }
+    .btn-outline { background: transparent; border: 2px solid #c2185b; color: #c2185b; border-radius: 30px; }
+    .btn-outline:hover { background: #fce4ec; }
+    .hero-emoji { font-size: 10rem; flex-shrink: 0; filter: drop-shadow(0 10px 30px rgba(194,24,91,.2)); }
+
+    /* OFFERS STRIP */
+    .offer-strip { background: linear-gradient(135deg, #c2185b, #e91e63); color: #fff; text-align: center; padding: 14px; font-weight: 600; font-size: .95rem; }
+    .offer-strip span { background: rgba(255,255,255,.2); border-radius: 20px; padding: 4px 14px; margin: 0 8px; }
+
+    /* SERVICES */
+    .section { padding: 80px 60px; }
+    .section-title { text-align: center; font-size: 2rem; color: #880e4f; margin-bottom: 8px; }
+    .section-sub { text-align: center; color: #9e6b7f; margin-bottom: 50px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .card { background: #fff; border-radius: 16px; padding: 36px 24px; text-align: center; box-shadow: 0 4px 24px rgba(194,24,91,.08); border-bottom: 4px solid #f48fb1; transition: transform .2s, box-shadow .2s; }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 12px 36px rgba(194,24,91,.15); }
+    .card-icon { font-size: 3rem; margin-bottom: 16px; }
+    .card h3 { color: #880e4f; font-size: 1.1rem; margin-bottom: 10px; }
+    .card p { color: #9e6b7f; font-size: .88rem; line-height: 1.6; }
+    .card .price-tag { display: inline-block; margin-top: 14px; background: #fce4ec; color: #c2185b; border-radius: 20px; padding: 4px 14px; font-weight: 700; font-size: .85rem; }
+
+    /* MENU / PRICING */
+    .menu { background: #fce4ec; padding: 80px 60px; }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+    .menu-card { background: #fff; border-radius: 14px; padding: 28px; box-shadow: 0 4px 20px rgba(194,24,91,.07); }
+    .menu-card h3 { color: #c2185b; font-size: 1.15rem; margin-bottom: 16px; border-bottom: 2px solid #f48fb1; padding-bottom: 10px; }
+    .menu-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #f8bbd0; font-size: .92rem; }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-item span:last-child { font-weight: 700; color: #c2185b; }
+
+    /* GALLERY */
+    .gallery { padding: 80px 60px; }
+    .gal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+    .gal-item { background: linear-gradient(135deg, #fce4ec, #f8bbd0); border-radius: 12px; height: 180px; display: flex; align-items: center; justify-content: center; font-size: 4rem; transition: transform .2s; }
+    .gal-item:hover { transform: scale(1.04); }
+
+    /* TEAM */
+    .team { background: #fff0f5; padding: 80px 60px; }
+    .team-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 28px; }
+    .tcard { background: #fff; border-radius: 16px; padding: 36px 24px; text-align: center; box-shadow: 0 4px 20px rgba(194,24,91,.08); }
+    .tcard-avatar { font-size: 4rem; margin-bottom: 14px; }
+    .tcard h3 { color: #880e4f; font-size: 1.05rem; margin-bottom: 6px; }
+    .tcard .role { color: #c2185b; font-size: .85rem; font-weight: 600; margin-bottom: 10px; }
+    .tcard p { color: #9e6b7f; font-size: .88rem; }
+
+    /* TESTIMONIALS */
+    .testimonials { padding: 80px 60px; }
+    .tc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .tc { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 4px 20px rgba(194,24,91,.08); border-left: 5px solid #e91e63; }
+    .tc p { color: #4a2c40; font-style: italic; line-height: 1.7; }
+    .tc strong { display: block; margin-top: 14px; color: #c2185b; font-style: normal; }
+    .stars { color: #f59e0b; font-size: 1.1rem; margin-bottom: 10px; }
+
+    /* BOOKING */
+    .booking { background: linear-gradient(135deg, #880e4f, #c2185b, #e91e63); padding: 80px 60px; text-align: center; color: #fff; }
+    .booking h2 { font-size: 2.2rem; margin-bottom: 14px; }
+    .booking p { opacity: .85; margin-bottom: 36px; font-size: 1.05rem; }
+    form { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; max-width: 720px; margin: 0 auto; }
+    input, select { padding: 12px 18px; border-radius: 30px; border: none; font-size: 1rem; flex: 1 1 200px; }
+    button[type=submit] { background: #fff; color: #c2185b; border: none; padding: 14px 36px; border-radius: 30px; font-size: 1rem; font-weight: 800; cursor: pointer; }
+    button[type=submit]:hover { background: #fce4ec; }
+
+    /* FOOTER */
+    footer { background: #880e4f; color: #f8bbd0; text-align: center; padding: 30px 60px; font-size: .9rem; }
+    footer span { color: #fff; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Blossом<span>Beauty</span></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#team">Our Team</a></li>
+    <li><a href="#booking" class="btn-nav">Book Now</a></li>
+  </ul>
+</nav>
+
+<div class="offer-strip">
+  Special Offer: <span>20% off on first visit</span> | <span>Bridal packages available</span> | <span>Free consultation</span>
+</div>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Glow Up with<br><span>Blossом Beauty</span></h1>
+    <p>Delhi's most loved beauty parlour for women who deserve the best. Expert stylists, luxury products, and a relaxing environment — all under one roof.</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn">Book Appointment</a>
+      <a href="#pricing" class="btn btn-outline">See Pricing</a>
+    </div>
+  </div>
+  <div class="hero-emoji">💄</div>
+</section>
+
+<section class="section" id="services">
+  <h2 class="section-title">Our Services</h2>
+  <p class="section-sub">Premium beauty treatments tailored just for you</p>
+  <div class="cards">
+    <div class="card"><div class="card-icon">💇‍♀️</div><h3>Hair Styling</h3><p>Cuts, blow-dry, keratin treatment, smoothening, and creative colouring by expert stylists.</p><div class="price-tag">From ₹499</div></div>
+    <div class="card"><div class="card-icon">💅</div><h3>Manicure & Pedicure</h3><p>Classic, gel, acrylic, and nail art — for flawless hands and feet.</p><div class="price-tag">From ₹350</div></div>
+    <div class="card"><div class="card-icon">✨</div><h3>Facial & Skin Care</h3><p>De-tan, clean-up, brightening facials, and advanced skin treatments for glowing skin.</p><div class="price-tag">From ₹699</div></div>
+    <div class="card"><div class="card-icon">🕯️</div><h3>Waxing & Threading</h3><p>Full body waxing with Rica / chocolate wax. Eyebrow and upper lip threading.</p><div class="price-tag">From ₹150</div></div>
+    <div class="card"><div class="card-icon">👰</div><h3>Bridal Makeup</h3><p>HD bridal makeup, pre-bridal packages, and hair styling for your special day.</p><div class="price-tag">From ₹8,999</div></div>
+    <div class="card"><div class="card-icon">🧖‍♀️</div><h3>Spa & Relaxation</h3><p>Head massage, body massage, aromatherapy, and foot reflexology packages.</p><div class="price-tag">From ₹1,199</div></div>
+  </div>
+</section>
+
+<section class="menu" id="pricing">
+  <h2 class="section-title">Price Menu</h2>
+  <p class="section-sub">Transparent pricing — no hidden charges</p>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <h3>💇‍♀️ Hair Services</h3>
+      <div class="menu-item"><span>Haircut (Short)</span><span>₹499</span></div>
+      <div class="menu-item"><span>Haircut (Long)</span><span>₹699</span></div>
+      <div class="menu-item"><span>Blow-Dry</span><span>₹399</span></div>
+      <div class="menu-item"><span>Global Colour</span><span>₹1,499+</span></div>
+      <div class="menu-item"><span>Highlights / Balayage</span><span>₹2,499+</span></div>
+      <div class="menu-item"><span>Keratin Treatment</span><span>₹3,999+</span></div>
+    </div>
+    <div class="menu-card">
+      <h3>✨ Skin & Facial</h3>
+      <div class="menu-item"><span>Basic Clean-Up</span><span>₹699</span></div>
+      <div class="menu-item"><span>De-Tan Facial</span><span>₹999</span></div>
+      <div class="menu-item"><span>Gold Facial</span><span>₹1,299</span></div>
+      <div class="menu-item"><span>Diamond Facial</span><span>₹1,599</span></div>
+      <div class="menu-item"><span>Hydra Facial</span><span>₹2,499</span></div>
+      <div class="menu-item"><span>Bleach (Full Face)</span><span>₹399</span></div>
+    </div>
+    <div class="menu-card">
+      <h3>💅 Nails</h3>
+      <div class="menu-item"><span>Manicure (Classic)</span><span>₹350</span></div>
+      <div class="menu-item"><span>Pedicure (Classic)</span><span>₹450</span></div>
+      <div class="menu-item"><span>Gel Manicure</span><span>₹799</span></div>
+      <div class="menu-item"><span>Gel Pedicure</span><span>₹999</span></div>
+      <div class="menu-item"><span>Nail Art (per nail)</span><span>₹50+</span></div>
+      <div class="menu-item"><span>Acrylic Extensions</span><span>₹1,499</span></div>
+    </div>
+    <div class="menu-card">
+      <h3>🧖‍♀️ Spa & Body</h3>
+      <div class="menu-item"><span>Head Massage (30 min)</span><span>₹499</span></div>
+      <div class="menu-item"><span>Body Massage (60 min)</span><span>₹1,499</span></div>
+      <div class="menu-item"><span>Aromatherapy</span><span>₹1,999</span></div>
+      <div class="menu-item"><span>Back Scrub</span><span>₹799</span></div>
+      <div class="menu-item"><span>Foot Reflexology</span><span>₹899</span></div>
+      <div class="menu-item"><span>Full Body Wax</span><span>₹1,199</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <h2 class="section-title">Our Work</h2>
+  <p class="section-sub">A glimpse of the magic we create</p>
+  <div class="gal-grid">
+    <div class="gal-item">💇‍♀️</div>
+    <div class="gal-item">💄</div>
+    <div class="gal-item">💅</div>
+    <div class="gal-item">✨</div>
+    <div class="gal-item">👰</div>
+    <div class="gal-item">🧖‍♀️</div>
+    <div class="gal-item">🌸</div>
+    <div class="gal-item">💋</div>
+  </div>
+</section>
+
+<section class="team" id="team">
+  <h2 class="section-title">Meet Our Artists</h2>
+  <p class="section-sub">Skilled professionals passionate about beauty</p>
+  <div class="team-cards">
+    <div class="tcard"><div class="tcard-avatar">👩‍🎨</div><h3>Priya Kapoor</h3><div class="role">Senior Hair Stylist</div><p>12 years experience. TIGI & Schwarzkopf certified. Specialises in balayage and keratin.</p></div>
+    <div class="tcard"><div class="tcard-avatar">👩‍💼</div><h3>Meena Sharma</h3><div class="role">Bridal Makeup Artist</div><p>500+ brides styled. HD & airbrush makeup specialist. Trained at VLCC New Delhi.</p></div>
+    <div class="tcard"><div class="tcard-avatar">🧑‍⚕️</div><h3>Sonia Verma</h3><div class="role">Skin Care Expert</div><p>Certified dermal therapist. Specialises in hydra facial and advanced skin treatments.</p></div>
+    <div class="tcard"><div class="tcard-avatar">👩‍🔬</div><h3>Ritu Malhotra</h3><div class="role">Nail Art Artist</div><p>Nail technician with 8 years experience. Creates custom designs and gel art.</p></div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2 class="section-title">Happy Clients</h2>
+  <p class="section-sub">What our clients say about us</p>
+  <div class="tc-grid">
+    <div class="tc"><div class="stars">★★★★★</div><p>"Got my bridal makeup done here — absolutely stunning! Priya understood exactly what I wanted. I cried happy tears when I saw myself."</p><strong>— Ananya R., Bride 2025</strong></div>
+    <div class="tc"><div class="stars">★★★★★</div><p>"Best salon in South Delhi. Meena's keratin treatment made my frizzy hair silky smooth. Worth every penny!"</p><strong>— Kavita M., Professional</strong></div>
+    <div class="tc"><div class="stars">★★★★★</div><p>"Their hydra facial is unreal — my skin was glowing for weeks. The ambiance is so relaxing, I fell asleep!"</p><strong>— Pooja S., Homemaker</strong></div>
+    <div class="tc"><div class="stars">★★★★☆</div><p>"Love the nail art here. Ritu is so talented and patient. My friends keep asking where I got my nails done!"</p><strong>— Divya T., Student</strong></div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <h2>Book Your Appointment</h2>
+  <p>Reserve your slot today — walk-ins welcome but prior booking recommended</p>
+  <form onsubmit="event.preventDefault(); alert('Appointment booked! We will confirm via WhatsApp within 1 hour.')">
+    <input type="text" placeholder="Your Name" required />
+    <input type="tel" placeholder="WhatsApp Number" required />
+    <input type="date" required />
+    <select>
+      <option>Choose Service</option>
+      <option>Hair Styling</option>
+      <option>Facial / Skin Care</option>
+      <option>Manicure & Pedicure</option>
+      <option>Bridal Makeup</option>
+      <option>Spa & Relaxation</option>
+      <option>Waxing & Threading</option>
+    </select>
+    <button type="submit">Book Now</button>
+  </form>
+</section>
+
+<footer>
+  <p>📍 Shop 4, Beauty Lane, Green Park Market, New Delhi – 110016 &nbsp;|&nbsp; 📞 +91 98110 77889 &nbsp;|&nbsp; ✉️ blossombeauty@gmail.com</p>
+  <p style="margin-top:10px">&copy; 2026 <span>Blossом Beauty Parlour</span>. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
